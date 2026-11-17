@@ -447,9 +447,3 @@ Produce `figs\matriz_confusion.png` y `resultados\matriz_confusion_metricas.csv`
 | pH | LSTM | 98,2 % | 77,5 % |
 
 **Cómo leerlas.** Los tres modelos aciertan la decisión en más del 98 % de los casos, y el LSTM no es el mejor: en pH confunde más que la regresión lineal los momentos en que el pH está en rango. No hay casos "alta" en el período de prueba (días 51 a 60), porque los datos se generaron con el control por umbrales, que mantiene la EC en 1,8 mientras la consigna sube a 2,0; por eso domina la clase "baja". Los valores del LSTM pueden variar un poco según tu entrenamiento de la fase 2.
-
----
-
-## Licencia
-
-El código y los datos simulados de este repositorio se publican bajo la licencia MIT (ver `LICENSE`). El artículo original de Devaraju et al. (2026) no se incluye y conserva los derechos de su editorial; cítalo si usas esta réplica. Si descargas el clima real con `src/descargar_clima.py`, esos datos son de Open-Meteo (CC BY 4.0) y no forman parte del repositorio.
