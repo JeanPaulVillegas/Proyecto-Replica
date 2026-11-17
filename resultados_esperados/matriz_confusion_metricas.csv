@@ -1,0 +1,7 @@
+variable,modelo,n,exactitud_pct,sensibilidad_baja_pct,precision_baja_pct,casos_reales_baja,sensibilidad_en rango_pct,precision_en rango_pct,casos_reales_en rango,sensibilidad_alta_pct,precision_alta_pct,casos_reales_alta
+EC,Persistencia,1495,99.6,99.5,99.8,856,99.7,99.4,639,,,0
+EC,Regresión lineal,1495,99.7,100.0,99.5,856,99.4,100.0,639,,,0
+EC,LSTM (artículo),1495,99.4,99.6,99.3,856,99.1,99.5,639,,,0
+pH,Persistencia,1495,98.2,99.0,99.1,1406,85.4,84.4,89,,,0
+pH,Regresión lineal,1495,98.9,99.1,99.7,1406,95.5,87.6,89,,,0
+pH,LSTM (artículo),1495,98.2,99.5,98.6,1406,77.5,90.8,89,,,0

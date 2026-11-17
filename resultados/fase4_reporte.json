@@ -1,0 +1,33 @@
+{
+  "minutos_simulados": 1127,
+  "lecturas_recibidas": 1127,
+  "disponibilidad_pct": 98.85,
+  "deteccion_accion_ms": {
+    "media": 2.722,
+    "p95": 2.722,
+    "n": 1
+  },
+  "procesamiento_edge_ms": {
+    "media": 2.722,
+    "p95": 2.722,
+    "n": 1
+  },
+  "inferencia_tflite_ms": {
+    "media": 0.724,
+    "p95": 1.004,
+    "n": 41
+  },
+  "sensor_desconexiones": [
+    {
+      "desconectado_s": 0.7
+    },
+    {
+      "desconectado_s": 0.1
+    }
+  ],
+  "reconexion_mqtt_nodo_s": null,
+  "registros_recuperados_buffer": null,
+  "reconexion_mqtt_edge_s": [],
+  "ordenes_ejecutadas": null,
+  "alertas": 0
+}

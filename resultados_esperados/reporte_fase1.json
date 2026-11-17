@@ -1,0 +1,276 @@
+{
+  "params": {
+    "days": 60,
+    "n_plants": 10,
+    "v_nominal_l": 80.0,
+    "v_refill_trigger_l": 76.0,
+    "ec_refill_water": 0.1,
+    "c_solution": 200.0,
+    "uptake_ec_l_per_g": 0.035,
+    "et_l_per_g_day": 0.0021,
+    "ph_rise_per_ecl": 0.05,
+    "ph_drift_per_day": 0.01,
+    "acid_ph_per_ml_per_l": 0.02,
+    "base_ph_per_ml_per_l": 0.02,
+    "dose_ph_raise_per_ml_per_l": 0.0004,
+    "w0_g": 5.0,
+    "wmax_g": 430.0,
+    "wmax_cv": 0.1,
+    "r_per_light_day": 0.175,
+    "r_cv": 0.06,
+    "start_date": "2025-01-01",
+    "clima_seed": 0,
+    "tau_building_h": 4.0,
+    "internal_gain_c": 0.5,
+    "t_fan_target": 23.5,
+    "fan_cooling_rate": 0.04,
+    "fan_max_delta_c": 3.0,
+    "room_relax_rate": 0.02,
+    "led_heat_c": 1.2,
+    "transp_vapor_kpa": 0.25,
+    "light_on_hour": 6,
+    "photoperiod_h": 16,
+    "lux_on": 18000.0,
+    "co2_ambient": 820.0,
+    "p_led_w": 60.0,
+    "p_fan_w": 12.0,
+    "p_heater_w": 50.0,
+    "p_pump_recirc_w": 8.0,
+    "p_dosing_pump_w": 6.0,
+    "dosing_ml_per_min": 50.0,
+    "noise_temp": 0.25,
+    "noise_rh": 1.5,
+    "noise_ph": 0.05,
+    "noise_ec_rel": 0.01,
+    "noise_n_rel": 0.025,
+    "noise_lux_rel": 0.1,
+    "noise_co2": 15.0,
+    "ph_sensor_drift_per_week": 0.03,
+    "spike_prob": 0.0008,
+    "dht_fail_prob": 0.005,
+    "gap_prob": 0.0015,
+    "gap_max_min": 12,
+    "ph_probe_slope": -5.7,
+    "ph_probe_offset": 21.34,
+    "seed": 0
+  },
+  "threshold_summary": {
+    "controller": "ThresholdController",
+    "seed": 0,
+    "clima": "sintético (normales climáticas de Chennai, aproximado)",
+    "yield_g_mean": 230.73723042546922,
+    "yield_g_std": 23.479325574400946,
+    "yield_cv_pct": 10.175785472984186,
+    "dosed_ab_ml": 467.6986005285488,
+    "dosed_acid_ml": 1406.2750561815412,
+    "dosed_base_ml": 0.0,
+    "nutr_discarded": 0.0,
+    "water_added_l": 64.0221237193137,
+    "water_discarded_l": 0.0,
+    "energy_kwh": 77.59314794729436,
+    "pump_min_per_day": 0.6246578855700302,
+    "light_h_per_day": 16.0
+  },
+  "dataset_1min": {
+    "rows": 86400,
+    "gap_rows_interpolated": 17,
+    "outliers": {
+      "temp_air": 1410,
+      "rh": 710,
+      "ph": 26,
+      "ec": 39,
+      "nitrogen": 18,
+      "lux": 0
+    },
+    "split": [
+      60479,
+      73440
+    ],
+    "windows": {
+      "forecast": {
+        "n_train": 60405,
+        "n_val": 12887,
+        "n_test": 12886,
+        "X_shape": [
+          86326,
+          60,
+          6
+        ],
+        "persistence_test": {
+          "rmse_ec": 0.01710592582821846,
+          "rmse_ph": 0.02901499718427658
+        },
+        "y_std_test": [
+          0.068663090467453,
+          0.04999048635363579
+        ]
+      },
+      "setpoint": {
+        "n_train": 60405,
+        "n_val": 12887,
+        "n_test": 12886,
+        "X_shape": [
+          86326,
+          60,
+          6
+        ],
+        "persistence_test": {
+          "rmse_ec": 0.22821088135242462,
+          "rmse_ph": 0.1694190800189972
+        },
+        "y_std_test": [
+          0.025832414627075195,
+          0.025832414627075195
+        ]
+      }
+    }
+  },
+  "dataset_500s": {
+    "rows": 10368,
+    "gap_rows_interpolated": 2,
+    "outliers": {
+      "temp_air": 184,
+      "rh": 90,
+      "ph": 0,
+      "ec": 2,
+      "nitrogen": 2,
+      "lux": 0
+    },
+    "split": [
+      7257,
+      8812
+    ],
+    "windows": {
+      "forecast": {
+        "n_train": 7196,
+        "n_val": 1494,
+        "n_test": 1495,
+        "X_shape": [
+          10307,
+          60,
+          6
+        ],
+        "persistence_test": {
+          "rmse_ec": 0.00469599012285471,
+          "rmse_ph": 0.008218532428145409
+        },
+        "y_std_test": [
+          0.06775610148906708,
+          0.04507939890027046
+        ]
+      },
+      "setpoint": {
+        "n_train": 7196,
+        "n_val": 1494,
+        "n_test": 1495,
+        "X_shape": [
+          10307,
+          60,
+          6
+        ],
+        "persistence_test": {
+          "rmse_ec": 0.2310791313648224,
+          "rmse_ph": 0.17019209265708923
+        },
+        "y_std_test": [
+          0.024975070729851723,
+          0.024975070729851723
+        ]
+      }
+    }
+  },
+  "three_controllers_check": [
+    {
+      "tratamiento": "Manual",
+      "rendimiento_g": 195.1,
+      "cv_pct": 10.5,
+      "temp_desv_media_C": 2.62,
+      "temp_sd_C": 2.72,
+      "hr_desv_media_pct": 9.88,
+      "ec_error_medio": 0.044,
+      "ph_error_medio": 0.088,
+      "ab_dosificado_ml": 485.0,
+      "acido_ml": 1404.0,
+      "base_ml": 373.0,
+      "agua_l": 56.0,
+      "energia_kwh": 73.4,
+      "bombas_min_dia": 0.75
+    },
+    {
+      "tratamiento": "Umbrales",
+      "rendimiento_g": 230.7,
+      "cv_pct": 10.2,
+      "temp_desv_media_C": 1.94,
+      "temp_sd_C": 2.08,
+      "hr_desv_media_pct": 10.27,
+      "ec_error_medio": 0.14,
+      "ph_error_medio": 0.1,
+      "ab_dosificado_ml": 468.0,
+      "acido_ml": 1406.0,
+      "base_ml": 0.0,
+      "agua_l": 64.0,
+      "energia_kwh": 77.6,
+      "bombas_min_dia": 0.62
+    },
+    {
+      "tratamiento": "Inteligente (provisional)",
+      "rendimiento_g": 230.7,
+      "cv_pct": 10.2,
+      "temp_desv_media_C": 1.94,
+      "temp_sd_C": 2.08,
+      "hr_desv_media_pct": 10.27,
+      "ec_error_medio": 0.036,
+      "ph_error_medio": 0.029,
+      "ab_dosificado_ml": 562.0,
+      "acido_ml": 1513.0,
+      "base_ml": 178.0,
+      "agua_l": 64.0,
+      "energia_kwh": 77.6,
+      "bombas_min_dia": 0.75
+    }
+  ],
+  "table1_like": [
+    {
+      "dia": 10,
+      "ec_obj": 1.59,
+      "ec_med": 1.59,
+      "ph_obj": 6.0,
+      "ph_med": 5.938
+    },
+    {
+      "dia": 20,
+      "ec_obj": 1.69,
+      "ec_med": 1.67,
+      "ph_obj": 6.0,
+      "ph_med": 6.001
+    },
+    {
+      "dia": 30,
+      "ec_obj": 1.79,
+      "ec_med": 1.796,
+      "ph_obj": 6.09,
+      "ph_med": 6.088
+    },
+    {
+      "dia": 40,
+      "ec_obj": 1.8,
+      "ec_med": 1.754,
+      "ph_obj": 6.19,
+      "ph_med": 6.172
+    },
+    {
+      "dia": 50,
+      "ec_obj": 1.89,
+      "ec_med": 1.865,
+      "ph_obj": 6.2,
+      "ph_med": 6.184
+    },
+    {
+      "dia": 60,
+      "ec_obj": 1.99,
+      "ec_med": 1.985,
+      "ph_obj": 6.29,
+      "ph_med": 6.278
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+grupo,chequeo,simulado,referencia,resultado,fuente
+Exterior,T media mes 1 (°C),25.36,23.9 – 26.9,OK,https://ds.data.jma.go.jp/gmd/tcc/tcc/products/climate/normal/parts/NrmMonth_e.php?stn=43279
+Exterior,T máx diaria media mes 1 (°C),30.15,27 – 31,OK,https://weather2travel.com/india/chennai/climate
+Exterior,T mín diaria media mes 1 (°C),20.70,18 – 22,OK,https://weather2travel.com/india/chennai/climate
+Exterior,T media mes 2 (°C),26.88,25.2 – 28.2,OK,https://ds.data.jma.go.jp/gmd/tcc/tcc/products/climate/normal/parts/NrmMonth_e.php?stn=43279
+Exterior,T máx diaria media mes 2 (°C),32.43,29 – 33,OK,https://weather2travel.com/india/chennai/climate
+Exterior,T mín diaria media mes 2 (°C),21.31,18 – 22,OK,https://weather2travel.com/india/chennai/climate
+Exterior,HR exterior mínima (%),38,25 – ,OK,criterio físico de la réplica
+Cuarto,T aire interior mínima (°C),21.09,17 – ,OK,criterio físico de la réplica
+Cuarto,T aire interior máxima (°C),32.33, – 35,OK,criterio físico de la réplica
+Cuarto,Oscilación diaria interior < exterior (°C),-4.81, – 0,OK,criterio físico de la réplica
+Cuarto,Cambio máximo de T aire en 1 min (°C),0.17, – 0.5,OK,criterio físico de la réplica
+Cuarto,HR interior media (%),68.9,45 – 80,OK,https://bpb-us-e1.wpmucdn.com/blogs.cornell.edu/dist/8/8824/files/2019/06/GPNOctober2016_LeafyGreens.pdf
+Cuarto,Cambio máximo de HR en 1 min (%),0.47, – 3,OK,criterio físico de la réplica
+Cuarto,CO2 interior medio (ppm),812,400 – 1000,OK,criterio físico de la réplica
+Cuarto,T agua mín (°C),21.66,18 – ,OK,criterio físico de la réplica
+Cuarto,T agua máx (°C),29.52, – 30,OK,https://bpb-us-e1.wpmucdn.com/blogs.cornell.edu/dist/8/8824/files/2019/06/GPNOctober2016_LeafyGreens.pdf
+Cuarto,Oscilación diaria agua < aire (°C),-2.60, – 0,OK,https://bpb-us-e1.wpmucdn.com/blogs.cornell.edu/dist/8/8824/files/2019/06/GPNOctober2016_LeafyGreens.pdf
+Solución,pH mínimo con control,5.90,5.5 – ,OK,https://www.greenhousegrower.com/crops/varieties/manage-ph-and-soluble-salts-in-hydroponics/
+Solución,pH máximo con control,6.19, – 6.5,OK,https://www.greenhousegrower.com/crops/varieties/manage-ph-and-soluble-salts-in-hydroponics/
+Solución,EC mínima (mS/cm),1.50,1.0 – ,OK,https://www.greenhousegrower.com/crops/varieties/manage-ph-and-soluble-salts-in-hydroponics/
+Solución,EC máxima (mS/cm),1.85, – 2.4,OK,https://www.greenhousegrower.com/crops/varieties/manage-ph-and-soluble-salts-in-hydroponics/
+Solución,Base / ácido usados (el pH tiende a subir),0.00, – 0.2,OK,https://www.greenhousegrower.com/crops/varieties/manage-ph-and-soluble-salts-in-hydroponics/
+Solución,pH sin control: subida media (pH/día),0.022,0.0 – ,OK,https://www.greenhousegrower.com/crops/varieties/manage-ph-and-soluble-salts-in-hydroponics/
+Solución,pH sin control: cambio máximo (pH/día),0.116, – 1.0,OK,https://www.greenhousegrower.com/crops/varieties/manage-ph-and-soluble-salts-in-hydroponics/
+Cultivo,"Peso fresco por planta, Manual (g)",195,100 – 350,OK,https://www.hortidaily.com/article/9878963/evaluating-lettuce-production-in-hydroponic-systems/
+Cultivo,"Peso fresco por planta, Umbrales (g)",231,100 – 350,OK,https://www.hortidaily.com/article/9878963/evaluating-lettuce-production-in-hydroponic-systems/
+Cultivo,"Peso fresco por planta, Inteligente (provisional) (g)",231,100 – 350,OK,https://www.hortidaily.com/article/9878963/evaluating-lettuce-production-in-hydroponic-systems/
+Cultivo,Agua repuesta por kg de lechuga (L/kg),27.7,10 – 45,OK,https://pmc.ncbi.nlm.nih.gov/articles/PMC4483736/
+Sensores,"DHT22 temperatura en pasos de 0,1 °C (% de lecturas)",100.0,99.9 – ,OK,https://cdn.sparkfun.com/assets/f/7/d/9/c/DHT22.pdf
+Sensores,DHT22 lecturas fallidas (%),1.51, – 3,OK,https://cdn.sparkfun.com/assets/f/7/d/9/c/DHT22.pdf
+Sensores,BH1750 lux máximo (límite 65535),26078, – 65535,OK,criterio físico de la réplica
+Sensores,NPK en enteros (% de lecturas),100.0,99.9 – ,OK,criterio físico de la réplica

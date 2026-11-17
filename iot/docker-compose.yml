@@ -1,0 +1,37 @@
+# Fase 4 · infraestructura IoT del artículo, emulada en contenedores.
+# Credenciales SOLO de uso local (no expuestas fuera de tu PC).
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: replica-mosquitto
+    ports: ["1883:1883"]
+    volumes: ["./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro"]
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: replica-influxdb
+    ports: ["8086:8086"]
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: replica12345
+      DOCKER_INFLUXDB_INIT_ORG: replica
+      DOCKER_INFLUXDB_INIT_BUCKET: hidroponia
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: replica-token-local
+    volumes: ["influx-data:/var/lib/influxdb2"]
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    container_name: replica-grafana
+    ports: ["3000:3000"]
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /var/lib/grafana/dashboards/hidroponia.json
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on: [influxdb]
+
+volumes:
+  influx-data:

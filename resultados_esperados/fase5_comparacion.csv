@@ -1,0 +1,15 @@
+métrica,artículo,realista,favorable
+Rendimiento manual (g),297.0,202.694,375.87
+Rendimiento umbrales (g),323.0,239.812,332.547
+Rendimiento LSTM (g),368.0,239.812,378.802
+"LSTM vs umbrales, rendimiento (%)",13.9,0.0,13.909
+"Umbrales vs manual, rendimiento (%)",8.8,18.312,-11.526
+Ahorro de nutrientes LSTM vs umbrales (%),27.6,-20.01,24.954
+Error medio EC con LSTM (mS/cm),0.03,0.034,0.04
+Error medio pH con LSTM,0.05,0.03,0.099
+"RMSE EC del LSTM, escala normalizada",0.25,0.128,0.165
+"RMSE pH del LSTM, escala normalizada",0.18,0.117,0.268
+R² EC del LSTM,0.91,0.99,0.985
+R² pH del LSTM,0.94,0.975,0.95
+"LSTM vs consigna sin LSTM, rendimiento (%)",,0.0,0.044
+LSTM supera a la regresión lineal (RMSE EC),,no,no

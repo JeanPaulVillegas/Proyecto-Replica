@@ -1,0 +1,8 @@
+modelo,RMSE_EC_mean,RMSE_EC_std,MAPE_EC_%_mean,MAPE_EC_%_std,R2_EC_mean,R2_EC_std,RMSE_pH_mean,RMSE_pH_std,MAPE_pH_%_mean,MAPE_pH_%_std,R2_pH_mean,R2_pH_std
+Persistencia,0.0051,,0.1244,,0.9928,,0.0097,,0.0689,,0.979,
+Regresión lineal,0.003,,0.0905,,0.9974,,0.01,,0.0814,,0.978,
+Random Forest,0.0181,,0.7856,,0.9085,,0.0105,,0.102,,0.9758,
+LSTM (artículo),0.0104,,0.3935,,0.9699,,0.0121,,0.1179,,0.9678,
+LSTM (artículo) sin aumentación,0.0141,,0.5245,,0.9444,,0.0146,,0.153,,0.9531,
+CNN 1D,0.031,,1.1366,,0.731,,0.0388,,0.4799,,0.6668,
+CNN-LSTM,0.0069,,0.2522,,0.9868,,0.011,,0.105,,0.9731,

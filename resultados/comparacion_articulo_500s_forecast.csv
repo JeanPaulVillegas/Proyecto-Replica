@@ -1,0 +1,7 @@
+,artículo,réplica (media),réplica en escala normalizada
+RMSE_EC,0.25,0.0104,0.164
+RMSE_pH,0.18,0.0121,0.137
+MAPE_EC_%,6.2,0.3935,
+MAPE_pH_%,4.7,0.1179,
+R2_EC,0.91,0.9699,0.9699
+R2_pH,0.94,0.9678,0.9678

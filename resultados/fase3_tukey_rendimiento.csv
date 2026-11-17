@@ -1,0 +1,7 @@
+a,b,diff_g,p
+Manual,Umbrales,51.36,0.0
+Manual,Consigna sin LSTM,51.36,0.0
+Manual,LSTM,51.36,0.0
+Umbrales,Consigna sin LSTM,0.0,1.0
+Umbrales,LSTM,0.0,1.0
+Consigna sin LSTM,LSTM,0.0,1.0

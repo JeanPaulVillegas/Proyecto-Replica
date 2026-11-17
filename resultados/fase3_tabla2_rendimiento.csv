@@ -1,0 +1,5 @@
+tratamiento,rendimiento_g,desvio_g,cv_pct,dias_a_cosecha,articulo_g
+Manual,250.4,31.7,12.7,59.2,297.0
+Umbrales,301.7,35.1,11.6,54.3,323.0
+Consigna sin LSTM,301.7,35.1,11.6,54.3,
+LSTM,301.7,35.1,11.6,54.3,368.0

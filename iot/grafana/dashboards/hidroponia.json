@@ -1,0 +1,275 @@
+{
+ "uid": "replica-hidroponia",
+ "title": "Réplica hidroponía IoT",
+ "time": {
+  "from": "now-30m",
+  "to": "now"
+ },
+ "refresh": "5s",
+ "schemaVersion": 39,
+ "panels": [
+  {
+   "id": 1,
+   "type": "timeseries",
+   "title": "EC (mS/cm): medida, consigna y pronóstico LSTM",
+   "gridPos": {
+    "x": 0,
+    "y": 0,
+    "w": 12,
+    "h": 8
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "influx-replica"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"sensores\" and (r._field == \"ec\")) |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    },
+    {
+     "refId": "B",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"control\" and (r._field == \"ec_consigna\" or r._field == \"ec_pronostico\")) |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   },
+   "options": {}
+  },
+  {
+   "id": 2,
+   "type": "timeseries",
+   "title": "pH: medido, consigna y pronóstico LSTM",
+   "gridPos": {
+    "x": 12,
+    "y": 0,
+    "w": 12,
+    "h": 8
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "influx-replica"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"sensores\" and (r._field == \"ph\")) |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    },
+    {
+     "refId": "B",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"control\" and (r._field == \"ph_consigna\" or r._field == \"ph_pronostico\")) |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   },
+   "options": {}
+  },
+  {
+   "id": 3,
+   "type": "timeseries",
+   "title": "Temperatura del aire (°C) y del agua",
+   "gridPos": {
+    "x": 0,
+    "y": 8,
+    "w": 12,
+    "h": 8
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "influx-replica"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"sensores\" and (r._field == \"temp_air\" or r._field == \"t_water\")) |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "celsius"
+    },
+    "overrides": []
+   },
+   "options": {}
+  },
+  {
+   "id": 4,
+   "type": "timeseries",
+   "title": "Humedad relativa (%)",
+   "gridPos": {
+    "x": 12,
+    "y": 8,
+    "w": 12,
+    "h": 8
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "influx-replica"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"sensores\" and (r._field == \"rh\")) |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percent"
+    },
+    "overrides": []
+   },
+   "options": {}
+  },
+  {
+   "id": 5,
+   "type": "timeseries",
+   "title": "Dosificación (mL)",
+   "gridPos": {
+    "x": 0,
+    "y": 16,
+    "w": 12,
+    "h": 8
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "influx-replica"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"acciones\" and (r._field == \"ab_ml\" or r._field == \"acido_ml\" or r._field == \"base_ml\")) |> aggregateWindow(every: v.windowPeriod, fn: sum, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   },
+   "options": {}
+  },
+  {
+   "id": 6,
+   "type": "timeseries",
+   "title": "Latencia detección → acción (ms)",
+   "gridPos": {
+    "x": 12,
+    "y": 16,
+    "w": 12,
+    "h": 8
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "influx-replica"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"latencia\" and (r._field == \"deteccion_accion_ms\" or r._field == \"inferencia_ms\")) |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "ms"
+    },
+    "overrides": []
+   },
+   "options": {}
+  },
+  {
+   "id": 7,
+   "type": "timeseries",
+   "title": "Alertas (Ec. 11)",
+   "gridPos": {
+    "x": 0,
+    "y": 24,
+    "w": 12,
+    "h": 8
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "influx-replica"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"alertas\" and (r._field == \"ec_dev\" or r._field == \"ph_dev\")) |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   },
+   "options": {}
+  },
+  {
+   "id": 8,
+   "type": "timeseries",
+   "title": "Luz (lux) y nitrógeno",
+   "gridPos": {
+    "x": 12,
+    "y": 24,
+    "w": 12,
+    "h": 8
+   },
+   "datasource": {
+    "type": "influxdb",
+    "uid": "influx-replica"
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "query": "from(bucket: \"hidroponia\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop) |> filter(fn: (r) => r._measurement == \"sensores\" and (r._field == \"lux\" or r._field == \"nitrogen\")) |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+     "datasource": {
+      "type": "influxdb",
+      "uid": "influx-replica"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   },
+   "options": {}
+  }
+ ],
+ "timezone": "browser"
+}

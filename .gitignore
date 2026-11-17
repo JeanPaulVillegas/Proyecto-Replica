@@ -1,0 +1,35 @@
+# --- Entorno de Python ---
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# --- Datos simulados pesados (se regeneran con src/generate_dataset.py) ---
+# Todo data/ se crea al correr la fase 1; pesa ~28 MB.
+data/
+
+# Clima real descargado de Open-Meteo (se regenera con src/descargar_clima.py)
+data_reales/
+
+# --- Salidas pesadas de las fases 2 y 5 (se regeneran al correr cada fase) ---
+resultados/fase5/**/*.csv.gz
+resultados/fase5/**/*.npz
+*.npz
+*.csv.gz
+
+# Modelos entrenados (se regeneran con src/train_models.py; ~0,4 MB cada uno).
+# Quita estas dos líneas si quieres publicar el modelo ya entrenado.
+*.keras
+*.tflite
+
+# --- Sistema operativo y editores ---
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# --- Comprimidos de entrega ---
+*.zip

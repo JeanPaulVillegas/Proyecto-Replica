@@ -1,0 +1,22 @@
+{
+  "dataset": "500s",
+  "target": "forecast",
+  "seeds": [
+    0
+  ],
+  "epochs_max": 10,
+  "tensorflow": "2.21.0",
+  "n_train": 7196,
+  "n_val": 1494,
+  "n_test": 1495,
+  "y_test_std": [
+    0.05979999899864197,
+    0.06719999760389328
+  ],
+  "tflite": {
+    "tflite_kb": 431.0,
+    "latency_ms_median": 0.204,
+    "latency_ms_p95": 0.359,
+    "max_diff_vs_keras": 1.1920928955078125e-07
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109
+  ],
+  "latencia_tflite_ms": 0.428333277380822,
+  "anova_rendimiento": {
+    "F": 47.74975045387094,
+    "p": 1.2426542332499002e-12
+  },
+  "tukey": [
+    {
+      "a": "Manual",
+      "b": "Umbrales",
+      "diff_g": 51.36,
+      "p": 0.0
+    },
+    {
+      "a": "Manual",
+      "b": "Consigna sin LSTM",
+      "diff_g": 51.36,
+      "p": 0.0
+    },
+    {
+      "a": "Manual",
+      "b": "LSTM",
+      "diff_g": 51.36,
+      "p": 0.0
+    },
+    {
+      "a": "Umbrales",
+      "b": "Consigna sin LSTM",
+      "diff_g": 0.0,
+      "p": 1.0
+    },
+    {
+      "a": "Umbrales",
+      "b": "LSTM",
+      "diff_g": 0.0,
+      "p": 1.0
+    },
+    {
+      "a": "Consigna sin LSTM",
+      "b": "LSTM",
+      "diff_g": 0.0,
+      "p": 1.0
+    }
+  ],
+  "lstm_menos_consigna": {
+    "rendimiento_g": 0.0,
+    "nutriente_usado": 0.0007401059145152544,
+    "ec_error": 9.08232104395626e-05,
+    "ph_error": -0.0019100317175402663
+  }
+}

@@ -2,7 +2,21 @@
 
 Este proyecto reproduce en simulación el sistema del artículo *Smart hydroponic farming system using IoT-integrated deep learning for real-time nutrient monitoring and climate control* (Ecohydrology & Hydrobiology 26, 2026, 100754).
 
-Plan completo de la réplica: https://claude.ai/artifact/8KZiKBegcz9dp7hKJX8e1r
+> **Aviso: todos los datos de este repositorio son simulados.** No hay hardware, ni cultivo físico, ni datos de los autores del artículo (el artículo no publica datos ni código). Los sensores, el clima del cuarto, la solución nutritiva y el crecimiento de la lechuga salen de un simulador escrito para esta réplica. Para que los datos se parezcan a los reales, el simulador usa el clima de Chennai (normales de la JMA u horario real de Open-Meteo), rangos de cultivo de lechuga publicados y la resolución y fallas reales de cada sensor; `src/validar_realismo.py` comprueba 32 rangos con su fuente. Los resultados sirven para analizar el método del artículo, no como mediciones de un cultivo.
+
+**Resultado principal.** En escenario realista, el LSTM predice EC y pH con poco error pero no supera a una regresión lineal ni a la persistencia, y en lazo cerrado no mejora el rendimiento ni ahorra nutrientes frente al control por umbrales. Las cifras del artículo (+13,9 % de rendimiento, ~25 % de ahorro) solo aparecen con supuestos favorables, y aun así el aporte del LSTM frente al mismo lazo sin LSTM es 0 % (fase 5).
+
+### Estructura
+
+| Carpeta | Contenido |
+| --- | --- |
+| `src/` | Simulador, pipeline, modelos, ensayo en lazo cerrado, nodo IoT, escenarios y matrices de confusión |
+| `iot/` | Docker Compose con Mosquitto, InfluxDB y Grafana (credenciales solo de uso local) |
+| `resultados_esperados/` | Resultados de referencia de cada fase, para comprobar tu ejecución |
+| `resultados/`, `figs/` | Tablas y figuras de la última ejecución |
+| `data/` | No se versiona: lo crea la fase 1 (`python src/generate_dataset.py`) |
+
+Los datos pesados (`data/`, `*.csv.gz`, `*.npz`) y los modelos entrenados (`*.keras`, `*.tflite`) no están en el repositorio porque se regeneran con los pasos de abajo y salen iguales en cada ejecución (semillas fijas).
 
 La réplica avanza por fases. Cada fase trae su código y sus instrucciones. Tú ejecutas cada fase en tu computadora y compruebas que tus resultados coincidan con los de la carpeta `resultados_esperados/`.
 
@@ -408,5 +422,34 @@ python src\escenarios.py
 
 Conclusión: las cifras del artículo se pueden obtener, pero solo con supuestos que el artículo no declara. La mejora que atribuye al LSTM se explica por el lazo que sigue la consigna, no por el modelo.
 
-#   P r o y e c t o - R e p l i c a  
- 
+
+---
+
+# Complemento: matrices de confusión (después de la fase 2)
+
+El LSTM predice números, no clases, así que para tener una matriz de confusión cada valor se clasifica según lo que decidiría el lazo de control: **baja** (debajo de la consigna menos la tolerancia), **en rango** o **alta**. Tolerancias: 0,2 mS/cm para la EC y 0,1 para el pH. La clase real es el valor medido 15 min después; la predicha, lo que pronosticó cada modelo. Se comparan persistencia, regresión lineal y el LSTM (`.tflite` de la fase 2).
+
+Requiere las fases 1 y 2. Con `(.venv)` activo:
+
+```
+python src\matriz_confusion.py
+```
+
+Produce `figs\matriz_confusion.png` y `resultados\matriz_confusion_metricas.csv` (exactitud, sensibilidad y precisión por clase). Referencia en `resultados_esperados\`:
+
+| Variable | Modelo | Exactitud | Sensibilidad "en rango" |
+| --- | --- | --- | --- |
+| EC | Persistencia | 99,6 % | 99,7 % |
+| EC | Regresión lineal | 99,7 % | 99,4 % |
+| EC | LSTM | 99,4 % | 99,1 % |
+| pH | Persistencia | 98,2 % | 85,4 % |
+| pH | Regresión lineal | 98,9 % | 95,5 % |
+| pH | LSTM | 98,2 % | 77,5 % |
+
+**Cómo leerlas.** Los tres modelos aciertan la decisión en más del 98 % de los casos, y el LSTM no es el mejor: en pH confunde más que la regresión lineal los momentos en que el pH está en rango. No hay casos "alta" en el período de prueba (días 51 a 60), porque los datos se generaron con el control por umbrales, que mantiene la EC en 1,8 mientras la consigna sube a 2,0; por eso domina la clase "baja". Los valores del LSTM pueden variar un poco según tu entrenamiento de la fase 2.
+
+---
+
+## Licencia
+
+El código y los datos simulados de este repositorio se publican bajo la licencia MIT (ver `LICENSE`). El artículo original de Devaraju et al. (2026) no se incluye y conserva los derechos de su editorial; cítalo si usas esta réplica. Si descargas el clima real con `src/descargar_clima.py`, esos datos son de Open-Meteo (CC BY 4.0) y no forman parte del repositorio.
